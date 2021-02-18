@@ -1,0 +1,28 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carnê</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="carne">
+        <div id="capa">
+            <h1>Carnê 2020</h1>
+        </div>
+        <div class="car">
+
+        </div>
+    </div>
+    <script lang="javascript">
+        function processForm(){
+            var parameters = location.search.substring(1).split("&");
+            var temp = parameters[0].split("=");
+            l = unescape(temp[1]);
+            document.getElementById("car").innerHTML = l;
+        }
+        processForm();
+    </script>
+</body>
+</html>

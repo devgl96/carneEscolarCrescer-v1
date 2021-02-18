@@ -1,0 +1,348 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Carne - Escola Crescer</title>
+    <script src="functions.js"></script>
+  </head>
+  <body>
+    <div class="carne left">
+      <h1>Carnê 2021</h1>
+
+      <div class="form">
+        <div class="formSelectOption">
+          <form name="formSelect">
+            <input
+              type="radio"
+              name="selectOption"
+              id="coverCarne"
+              value="coverCarnePrint"
+              onclick="showDiv('coverCarnePrint')"
+            />
+            Capa <br />
+            <input
+              type="radio"
+              name="selectOption"
+              id="carneFevNov"
+              value="carneFevNovPrint"
+              onclick="showDiv('carneFevNovPrint')"
+            />
+            Carnê - Fev à Nov <br />
+            <input
+              type="radio"
+              name="selectOption"
+              id="mesDez"
+              value="mesDezPrint"
+              onclick="showDiv('mesDezPrint')"
+            />
+            Mês de Dezembro
+          </form>
+        </div>
+        <div id="formInput">
+          <form name="meuForm" onsubmit="return validaForm()">
+            Nome Completo
+            <input
+              type="text"
+              name="nomeCompleto"
+              id="nomeAluno"
+              onKeyUp="nomeInsert()"
+              required
+              placeholder="Digite o Nome Completo"
+            />
+            <!--Data de Vencimento <input type="date" id="dataPagamento" onKeyUp="dataVencimentoInsert()">-->
+            Turma
+            <input
+              type="text"
+              name="turma"
+              id="turmaAluno"
+              onKeyUp="turmaInsert()"
+              required
+              placeholder="Digite a Turma do Aluno"
+              pattern="Maternal|Infantil I|Infantil II|Infantil III"
+            />
+            Valor
+            <input
+              type="text"
+              name="valor"
+              id="valorMensalidade"
+              onKeyUp="valorInsert()"
+              required
+              placeholder="Digite o Valor da Mensalidade"
+            />
+          </form>
+        </div>
+        <!--<input type="submit" value="Imprimir" class="button button1" onclick="imprimirCarne(showValue())">-->
+        <button class="button button1" onclick="imprimirCarne(showValue())">
+          Imprimir
+        </button>
+
+        <!--<input type="submit" value="Adicionar" class="button button2" onclick="imprimirCarne(showValue())">-->
+        <button class="button button2" onclick="addRowDez()">Adicionar</button>
+      </div>
+    </div>
+
+    <div class="printCarne right" id="printCarne">
+      <table align="left" id="coverCarnePrint">
+        <!--Capa do Carnê-->
+        <tr>
+          <td colspan="2" id="capaCarne">
+            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
+            <h2>Carnê Escolar 2021</h2>
+          </td>
+        </tr>
+        <!--Capa do Carnê-->
+        <tr>
+          <td colspan="2" id="capaCarne">
+            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
+            <h2>Carnê Escolar 2021</h2>
+          </td>
+        </tr>
+        <!--Capa do Carnê-->
+        <tr>
+          <td colspan="2" id="capaCarne">
+            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
+            <h2>Carnê Escolar 2021</h2>
+          </td>
+        </tr>
+        <!--Capa do Carnê-->
+        <tr>
+          <td colspan="2" id="capaCarne">
+            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
+            <h2>Carnê Escolar 2021</h2>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Folhas do Carnê-->
+
+      <table align="left" id="carneFevNovPrint">
+        <tr>
+          <!--Fevereiro-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Março-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Abril-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Maio-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Junho-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Julho-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Agosto-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Setembro-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Outubro-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+
+        <tr>
+          <!--Novembro-->
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+          <td>
+            <h3>Escola Crescer</h3>
+            <p class="alunoCarne"><b>Aluno:</b></p>
+            <p class="vencimentoCarne"></p>
+            <p class="turmaCarne"><b>Turma:</b></p>
+            <p class="valorCarne"><b>Valor: R$</b></p>
+            <p class="totalCarne"><b>Total: R$</b></p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Mês de Dezembro -->
+
+      <table align="left" id="mesDezPrint">
+        <!-- <tr> Dezembro 
+                        <td>
+                            <h3>Escola Crescer</h3>
+                            <p class="alunoCarne"><b>Aluno:</b> </p>
+                            <p class="vencimentoCarne"></p>
+                            <p class="turmaCarne"><b>Turma:</b> </p>
+                            <p class="valorCarne"><b>Valor: R$</b> </p>
+                            <p class="totalCarne"><b>Total: R$</b> </p>
+                        </td>
+                        <td>
+                            <h3>Escola Crescer</h3>
+                            <p class="alunoCarne"><b>Aluno:</b> </p>
+                            <p class="vencimentoCarne"></p>
+                            <p class="turmaCarne"><b>Turma:</b> </p>
+                            <p class="valorCarne"><b>Valor: R$</b> </p>
+                            <p class="totalCarne"><b>Total: R$</b> </p>
+                        </td>
+                    </tr>-->
+      </table>
+    </div>
+
+    <script src="functions.js"></script>
+  </body>
+</html>
