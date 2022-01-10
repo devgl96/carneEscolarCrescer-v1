@@ -1,24 +1,44 @@
 // Carregar função ao iniciar a página
+// window.onload = main;
 window.onload = dataVencimentoInsert;
+
+function setTitleApp() {
+  let headingCarneLeft = document.getElementById("title_carne_left");
+
+  headingCarneLeft.innerHTML = `Carnê ${new Date().getFullYear()}`;
+}
+
+function setTitleCapaCarne() {
+  let headingCapaCarne = document.getElementsByClassName("capaCarne");
+
+  for(let i = 0; i < headingCapaCarne.length; i++) {
+    headingCapaCarne[i].children[1].innerHTML = `Carnê Escolar ${new Date().getFullYear()}`;
+  }
+
+  // console.log("HeadingCapaCarne: ", headingCapaCarne)
+}
 
 function validaForm() {
   var campos =
-    document.forms["meuForm"]["nomeCompleto"]["turma"]["valor"].value;
-  if (document.meuForm.nomeCompleto == "") {
-    alert("Preencha o campo do Nome Completo");
-    document.meuForm.nomeCompleto.focus();
+    document.forms.meuForm.elements;
+
+  console.log("Campos: ", campos);
+  console.log("Nome do Aluno: ", campos.nomeAluno);
+  if (campos.nomeAluno.innerText === "") {
+    console.log("Preencha o campo do Nome Completo");
+    campos.nomeAluno.focus();
     return false;
   }
 
-  if (document.meuForm.turma == "") {
-    alert("Preencha o campo da Turma do Aluno");
-    document.meuForm.turma.focus();
+  if (campos.turmaAluno.innerHTML === "") {
+    console.log("Preencha o campo da Turma do Aluno");
+    campos.turmaAluno.focus();
     return false;
   }
 
-  if (document.meuForm.valorMensalidade == "") {
-    alert("Preencha o campo da Mensalidade do Aluno");
-    document.meuForm.valorMensalidade.focus();
+  if (campos.valorMensalidade.innerHTML === "") {
+    console.log("Preencha o campo da Mensalidade do Aluno");
+    campos.valorMensalidade.focus();
     return false;
   }
 
@@ -26,31 +46,39 @@ function validaForm() {
 }
 
 function imprimirCarne(tableNameId) {
+  console.log("imprimirCarne!!!");
   var paginaPrincipal = document.body.innerHTML;
   var imprimirCarne = document.getElementById(tableNameId).innerHTML;
-  console.log(imprimirCarne);
+  // console.log(imprimirCarne);
 
-  if (tableNameId === "carneFevNovPrint" || tableNameId === "mesDezPrint") {
-    //alert("Estou aqui => " + tableNameId);
-    document.body.innerHTML =
-      '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrint.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
-      tableNameId +
-      ">" +
-      imprimirCarne +
-      "</table></body>";
+  var verifyFieldsForm = validaForm();
+
+  if(verifyFieldsForm){
+    console.log("Tudo OKAY!");
+    if (tableNameId === "carneFevNovPrint" || tableNameId === "mesDezPrint") {
+      //alert("Estou aqui => " + tableNameId);
+      document.body.innerHTML =
+        '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrint.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
+        tableNameId +
+        ">" +
+        imprimirCarne +
+        "</table></body>";
+    } else {
+      //alert("Estou aqui => " + tableNameId);
+      document.body.innerHTML =
+        '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrinter.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
+        tableNameId +
+        ">" +
+        imprimirCarne +
+        "</table></body>";
+    }
+
+    window.focus();
+    window.print();
+    document.body.innerHTML = paginaPrincipal;
   } else {
-    //alert("Estou aqui => " + tableNameId);
-    document.body.innerHTML =
-      '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrinter.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
-      tableNameId +
-      ">" +
-      imprimirCarne +
-      "</table></body>";
+    console.log("Verifique os campos!");
   }
-
-  window.focus();
-  window.print();
-  document.body.innerHTML = paginaPrincipal;
 }
 
 // Inserir Nome do aluno no carnê
@@ -58,17 +86,16 @@ function nomeInsert() {
   var nomeAluno = document.getElementsByClassName("alunoCarne");
 
   for (var i = 0; i < nomeAluno.length; i++) {
-    nomeAluno[i].innerHTML =
-      "<b>Aluno: </b>" + document.getElementById("nomeAluno").value;
+    nomeAluno[i].innerHTML = `<b>Aluno: </b> ${document.getElementById("nomeAluno").value}`;
   }
 }
 
 var dataVencimentoInsert = function() {
-  hideAll();
-  console.log("Inserindo datas de vencimento \n");
+  main();
+  // console.log("Inserindo datas de vencimento \n");
   var datasPag = new Array();
   //var meses = ["(Fevereiro)", "(Março)", "(Abril)", "(Maio)", "(Junho)", "(Julho)", "(Agosto)", "(Setembro)", "(Outubro)", "(Novembro)", "(Dezembro)"];
-  var ano = "2021";
+  var ano = new Date().getFullYear();
   var mes = "02";
   var dia = "08";
   var dataVencimento = document.getElementsByClassName("vencimentoCarne");
@@ -84,19 +111,23 @@ var dataVencimentoInsert = function() {
   }
 
   // Inserindo dados no Carnê
-  for (var i = 0, j = 0; i < dataVencimento.length * 2; i += 2, j++) {
-    dataVencimento[i].innerHTML = "<b>Vencimento: </b>" + datasPag[j];
-    dataVencimento[i + 1].innerHTML = "<b>Vencimento: </b>" + datasPag[j];
+  for (var i = 0, j = 0; i < dataVencimento.length * 2 && i <= 18; i += 2, j++) {
+    if(datasPag[j]) {
+      dataVencimento[i].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
+      dataVencimento[i + 1].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
+    }
   }
 };
 
 // Inserir turma no carnê
 function turmaInsert() {
+  var turmaSelect = document.getElementById("turmaAluno").value;
   var turmaAluno = document.getElementsByClassName("turmaCarne");
 
+  // console.log(turmaSelect)
+
   for (var i = 0; i < turmaAluno.length; i++) {
-    turmaAluno[i].innerHTML =
-      "<b>Turma:</b> " + document.getElementById("turmaAluno").value;
+    turmaAluno[i].innerHTML = `<b>Turma:</b> ${turmaSelect}`;
   }
 }
 
@@ -105,8 +136,7 @@ function valorInsert() {
   var valorMensalidade = document.getElementsByClassName("valorCarne");
 
   for (var i = 0; i < valorMensalidade.length; i++) {
-    valorMensalidade[i].innerHTML =
-      "<b>Valor: R$</b> " + document.getElementById("valorMensalidade").value;
+    valorMensalidade[i].innerHTML = `<b>Valor: R$</b> ${document.getElementById("valorMensalidade").value}`;
   }
 }
 
@@ -121,8 +151,6 @@ function showValue() {
     }
   }
 
-  //alert('Selecionado: ' + radBut[select].value);
-
   return radBut[select].value;
 }
 
@@ -130,6 +158,7 @@ function showDiv(nameDiv) {
   var oneDiv = document.getElementById(nameDiv);
   var divs = ["coverCarnePrint", "carneFevNovPrint", "mesDezPrint"];
   var form = document.getElementById("formInput");
+  let buttons = ["button1", "button2"];
 
   for (var i = 0; i < divs.length; i++) {
     if (oneDiv != document.getElementById(divs[i])) {
@@ -141,15 +170,22 @@ function showDiv(nameDiv) {
 
   // Mostrar o form
   if (nameDiv !== "coverCarnePrint") {
-    console.log("Display do Form: " + form.style.display);
+    // console.log("Display do Form: " + form.style.display);
     form.style.display = "";
 
     if (showValue() === "mesDezPrint") {
+      document.getElementsByClassName("button button1")[0].style.display = "block";
+      document.getElementsByClassName("button button2")[0].style.display = "block";
       document.getElementById("nomeAluno").onkeyup = null;
       document.getElementById("turmaAluno").onkeyup = null;
       document.getElementById("valorMensalidade").onkeyup = null;
+    } else {
+      document.getElementsByClassName("button1")[0].style.display = "block";
+      document.getElementsByClassName("button button2")[0].style.display = "none";
     }
   } else {
+    document.getElementsByClassName("button button1")[0].style.display = "block";
+    document.getElementsByClassName("button button2")[0].style.display = "none";
     form.style.display = "none";
   }
 }
@@ -165,7 +201,7 @@ var addRowDez = function() {
   // Data de Dezembro
   var diaDez = "08";
   var mesDez = "12";
-  var anoDez = 2021;
+  var anoDez = new Date().getFullYear();
 
   for (var i = 0; i < 2; i++) {
     var cel = newRow.insertCell(i);
@@ -187,17 +223,17 @@ var addRowDez = function() {
   }
 
   if (nameAluno.value !== "") {
-    console.log("Clear field - Nome");
+    // console.log("Clear field - Nome");
     nameAluno.value = "";
   }
 
   if (turmaAluno !== "") {
-    console.log("Clear field - Turma");
+    // console.log("Clear field - Turma");
     turmaAluno.value = "";
   }
 
   if (valorMensalidade !== "") {
-    console.log("Clear field - Valor");
+    // console.log("Clear field - Valor");
     valorMensalidade.value = "";
   }
 };
@@ -208,8 +244,19 @@ function hideTable(nameId) {
 }
 
 var hideAll = function() {
+  setTitleApp();
+  setTitleCapaCarne();
   hideTable("carneFevNovPrint");
   hideTable("coverCarnePrint");
   hideTable("mesDezPrint");
   hideTable("formInput");
 };
+
+var main = () => {
+  setTitleApp();
+  setTitleCapaCarne();
+  hideTable("carneFevNovPrint");
+  hideTable("coverCarnePrint");
+  hideTable("mesDezPrint");
+  hideTable("formInput");
+}
