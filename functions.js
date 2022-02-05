@@ -23,7 +23,7 @@ function validaForm() {
     document.forms.meuForm.elements;
 
   console.log("Campos: ", campos);
-  console.log("Nome do Aluno: ", campos.nomeAluno);
+  console.log("Nome do Aluno: ", campos.nomeAluno.innerText);
   if (campos.nomeAluno.innerText === "") {
     console.log("Preencha o campo do Nome Completo");
     campos.nomeAluno.focus();
@@ -51,7 +51,8 @@ function imprimirCarne(tableNameId) {
   var imprimirCarne = document.getElementById(tableNameId).innerHTML;
   // console.log(imprimirCarne);
 
-  var verifyFieldsForm = validaForm();
+  // var verifyFieldsForm = validaForm();
+  var verifyFieldsForm = true;
 
   if(verifyFieldsForm){
     console.log("Tudo OKAY!");
@@ -96,11 +97,11 @@ var dataVencimentoInsert = function() {
   var datasPag = new Array();
   //var meses = ["(Fevereiro)", "(Março)", "(Abril)", "(Maio)", "(Junho)", "(Julho)", "(Agosto)", "(Setembro)", "(Outubro)", "(Novembro)", "(Dezembro)"];
   var ano = new Date().getFullYear();
-  var mes = "02";
+  var mes = "01";
   var dia = "08";
   var dataVencimento = document.getElementsByClassName("vencimentoCarne");
 
-  for (var i = 2, j = 0; i <= 12; i++, j++) {
+  for (var i = 1, j = 0; i <= 12; i++, j++) {
     if (i < 10) dataPagamento = dia + "/0" + parseInt(mes) + "/" + ano;
     //dataPagamento = dia + "/" + meses[j].toString() + "/" + ano + "<br>";
     else dataPagamento = dia + "/" + parseInt(mes) + "/" + ano;
@@ -111,7 +112,7 @@ var dataVencimentoInsert = function() {
   }
 
   // Inserindo dados no Carnê
-  for (var i = 0, j = 0; i < dataVencimento.length * 2 && i <= 18; i += 2, j++) {
+  for (var i = 0, j = 0; i < dataVencimento.length * 2 && i <= 22; i += 2, j++) {
     if(datasPag[j]) {
       dataVencimento[i].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
       dataVencimento[i + 1].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
