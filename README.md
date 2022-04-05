@@ -1,4 +1,5 @@
 # Carne Escolar App
+![Snapshot from Carne Escola Crescer App](/design/carneEscolarCrescer-v1.jpg)
 Aplicativo desenvolvido para ajudar na criação de Carnê Escolar da Escola Crescer
 
 ## Versões
