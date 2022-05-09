@@ -66,12 +66,14 @@
             /> -->
             <!-- Try a new thing -->
             Turma
-            <select 
-              name="turma" 
+            <select
+              name="turma"
               id="turmaAluno"
               onchange="turmaInsert()"
               required
             >
+              <option value="default">Escolha uma turma</option>
+              <option value="Maternalzinho">Maternalzinho</option>
               <option value="Maternal">Maternal</option>
               <option value="Infantil I">Infantil I</option>
               <option value="Infantil II">Infantil II</option>
@@ -90,12 +92,18 @@
         </div>
         <!--<input type="submit" value="Imprimir" class="button button1" onclick="imprimirCarne(showValue())">-->
         <div class="buttonContainer">
-          <button class="button button1" type="submit" onclick="imprimirCarne(showValue())">
+          <button
+            class="button button1"
+            type="submit"
+            onclick="imprimirCarne(showValue())"
+          >
             Imprimir
           </button>
-  
+
           <!--<input type="submit" value="Adicionar" class="button button2" onclick="imprimirCarne(showValue())">-->
-          <button class="button button2" type="submit" onclick="addRowDez()">Adicionar</button>
+          <button class="button button2" type="submit" onclick="addRowDez()">
+            Adicionar
+          </button>
         </div>
       </div>
     </div>
