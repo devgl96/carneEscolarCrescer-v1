@@ -167,7 +167,7 @@ function showValue() {
 function showDiv(nameDiv) {
   var oneDiv = document.getElementById(nameDiv);
 
-  var divs = ["coverCarnePrint", "coverCarneWithNamePrint", "carneFevNovPrint"];
+  var divs = ["coverCarneWithNamePrint", "carneFevNovPrint"];
 
   var form = document.getElementById("formInput");
   var formCover = document.getElementById("formInputCover");
@@ -186,31 +186,19 @@ function showDiv(nameDiv) {
   console.log("showDiv ===> oneDiv: ", oneDiv);
 
   // Mostrar o form
-  if (nameDiv !== "coverCarnePrint") {
-    console.log("ShowValue: " + showValue());
-    form.style.display = "";
-
-    if (showValue() === "coverCarneWithNamePrint") {
-      form.style.display = "none";
-      formCover.style.display = "";
-      document.getElementsByClassName("button button1")[0].style.display =
-        "block";
-      document.getElementsByClassName("button button2")[0].style.display =
-        "block";
-      document.getElementById("nomeAluno").onkeyup = null;
-    } else {
-      formCover.style.display = "none";
-      form.style.display = "";
-      document.getElementsByClassName("button1")[0].style.display = "block";
-      document.getElementsByClassName("button button2")[0].style.display =
-        "none";
-    }
-  } else {
+  if (showValue() === "coverCarneWithNamePrint") {
+    form.style.display = "none";
+    formCover.style.display = "";
     document.getElementsByClassName("button button1")[0].style.display =
       "block";
-    document.getElementsByClassName("button button2")[0].style.display = "none";
-    form.style.display = "none";
+    document.getElementsByClassName("button button2")[0].style.display =
+      "block";
+    document.getElementById("nomeAluno").onkeyup = null;
+  } else {
     formCover.style.display = "none";
+    form.style.display = "";
+    document.getElementsByClassName("button1")[0].style.display = "block";
+    document.getElementsByClassName("button button2")[0].style.display = "none";
   }
 }
 
@@ -302,7 +290,6 @@ var main = async () => {
   await setTitleApp();
   await setTitleCapaCarne();
   hideElement("carneFevNovPrint");
-  hideElement("coverCarnePrint");
   hideElement("formInput");
   hideElement("formInputCover");
 };

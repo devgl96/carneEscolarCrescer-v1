@@ -16,25 +16,16 @@
         <div class="formSelectOption">
           <form name="formSelect">
             <input
-              placeholder="Capa"
-              type="radio"
-              name="selectOption"
-              id="coverCarne"
-              value="coverCarnePrint"
-              onclick="showDiv('coverCarnePrint')"
-            />
-            Capa <br />
-            <input
-              placeholder="Capa (com Nome)"
+              placeholder="coverCarneWithNamePrint"
               type="radio"
               name="selectOption"
               id="coverCarneWithName"
               value="coverCarneWithNamePrint"
               onclick="showDiv('coverCarneWithNamePrint')"
             />
-            Capa (com Nome) <br />
+            Capa <br />
             <input
-              placeholder="Carnê Anual"
+              placeholder="carneFevNovPrint"
               type="radio"
               name="selectOption"
               id="carneFevNov"
@@ -56,9 +47,8 @@
               placeholder="Digite o Nome Completo"
             />
             Turma
-
             <select
-              title="Selecione a Turma"
+              title="Selecione Turma"
               name="turma"
               id="turmaAluno"
               onchange="turmaInsert()"
@@ -108,7 +98,6 @@
             Imprimir
           </button>
 
-          <!--<input type="submit" value="Adicionar" class="button button2" onclick="imprimirCarne(showValue())">-->
           <button
             class="button button2"
             type="submit"
@@ -120,38 +109,7 @@
       </div>
     </div>
 
-    <div class="printCarne right">
-      <table align="left" id="coverCarnePrint">
-        <!--Capa do Carnê-->
-        <tr>
-          <td colspan="2" class="capaCarne">
-            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
-            <h2>Carnê Escolar 2021</h2>
-          </td>
-        </tr>
-        <!--Capa do Carnê-->
-        <tr>
-          <td colspan="2" class="capaCarne">
-            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
-            <h2>Carnê Escolar 2021</h2>
-          </td>
-        </tr>
-        <!--Capa do Carnê-->
-        <tr>
-          <td colspan="2" class="capaCarne">
-            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
-            <h2>Carnê Escolar 2021</h2>
-          </td>
-        </tr>
-        <!--Capa do Carnê-->
-        <tr>
-          <td colspan="2" class="capaCarne">
-            <img src="img/logo.png" alt="Logotipo Escola Crescer" />
-            <h2>Carnê Escolar 2021</h2>
-          </td>
-        </tr>
-      </table>
-
+    <div class="printCarne right" id="printCarne">
       <!-- Folhas do Carnê-->
       <table align="left" id="carneFevNovPrint">
         <tr>
@@ -396,9 +354,7 @@
       </table>
 
       <!-- Capas do Carnê com Nome -->
-      <div class="printCarne right" id="printCarneCoverWithName">
-        <table align="left" id="coverCarneWithNamePrint"></table>
-      </div>
+      <table align="left" id="coverCarneWithNamePrint"></table>
     </div>
 
     <script src="functions.js"></script>
