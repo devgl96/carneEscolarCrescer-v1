@@ -1,5 +1,4 @@
 // Carregar função ao iniciar a página
-// window.onload = main;
 window.onload = dataVencimentoInsert;
 
 function setTitleApp() {
@@ -11,16 +10,15 @@ function setTitleApp() {
 function setTitleCapaCarne() {
   let headingCapaCarne = document.getElementsByClassName("capaCarne");
 
-  for(let i = 0; i < headingCapaCarne.length; i++) {
-    headingCapaCarne[i].children[1].innerHTML = `Carnê Escolar ${new Date().getFullYear()}`;
+  for (let i = 0; i < headingCapaCarne.length; i++) {
+    headingCapaCarne[
+      i
+    ].children[1].innerHTML = `Carnê Escolar ${new Date().getFullYear()}`;
   }
-
-  // console.log("HeadingCapaCarne: ", headingCapaCarne)
 }
 
 function validaForm() {
-  var campos =
-    document.forms.meuForm.elements;
+  var campos = document.forms.meuForm.elements;
 
   console.log("Campos: ", campos);
   console.log("Nome do Aluno: ", campos.nomeAluno.innerText);
@@ -49,15 +47,12 @@ function imprimirCarne(tableNameId) {
   console.log("imprimirCarne!!!");
   var paginaPrincipal = document.body.innerHTML;
   var imprimirCarne = document.getElementById(tableNameId).innerHTML;
-  // console.log(imprimirCarne);
 
-  // var verifyFieldsForm = validaForm();
   var verifyFieldsForm = true;
 
-  if(verifyFieldsForm){
+  if (verifyFieldsForm) {
     console.log("Tudo OKAY!");
     if (tableNameId === "carneFevNovPrint" || tableNameId === "mesDezPrint") {
-      //alert("Estou aqui => " + tableNameId);
       document.body.innerHTML =
         '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrint.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
         tableNameId +
@@ -65,7 +60,6 @@ function imprimirCarne(tableNameId) {
         imprimirCarne +
         "</table></body>";
     } else {
-      //alert("Estou aqui => " + tableNameId);
       document.body.innerHTML =
         '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrinter.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
         tableNameId +
@@ -87,15 +81,17 @@ function nomeInsert() {
   var nomeAluno = document.getElementsByClassName("alunoCarne");
 
   for (var i = 0; i < nomeAluno.length; i++) {
-    nomeAluno[i].innerHTML = `<b>Aluno: </b> ${document.getElementById("nomeAluno").value}`;
+    nomeAluno[i].innerHTML = `<b>Aluno: </b> ${
+      document.getElementById("nomeAluno").value
+    }`;
   }
 }
 
-var dataVencimentoInsert = function() {
+var dataVencimentoInsert = function () {
   main();
-  // console.log("Inserindo datas de vencimento \n");
+
   var datasPag = new Array();
-  //var meses = ["(Fevereiro)", "(Março)", "(Abril)", "(Maio)", "(Junho)", "(Julho)", "(Agosto)", "(Setembro)", "(Outubro)", "(Novembro)", "(Dezembro)"];
+
   var ano = new Date().getFullYear();
   var mes = "01";
   var dia = "08";
@@ -103,17 +99,19 @@ var dataVencimentoInsert = function() {
 
   for (var i = 1, j = 0; i <= 12; i++, j++) {
     if (i < 10) dataPagamento = dia + "/0" + parseInt(mes) + "/" + ano;
-    //dataPagamento = dia + "/" + meses[j].toString() + "/" + ano + "<br>";
     else dataPagamento = dia + "/" + parseInt(mes) + "/" + ano;
-    //dataPagamento = dia + "/" + meses[j].toString()  + "/" + ano + "<br>";
 
     datasPag[j] = dataPagamento;
     mes = parseInt(i) + 1;
   }
 
   // Inserindo dados no Carnê
-  for (var i = 0, j = 0; i < dataVencimento.length * 2 && i <= 22; i += 2, j++) {
-    if(datasPag[j]) {
+  for (
+    var i = 0, j = 0;
+    i < dataVencimento.length * 2 && i <= 22;
+    i += 2, j++
+  ) {
+    if (datasPag[j]) {
       dataVencimento[i].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
       dataVencimento[i + 1].innerHTML = `<b>Vencimento: </b> ${datasPag[j]}`;
     }
@@ -125,8 +123,6 @@ function turmaInsert() {
   var turmaSelect = document.getElementById("turmaAluno").value;
   var turmaAluno = document.getElementsByClassName("turmaCarne");
 
-  // console.log(turmaSelect)
-
   for (var i = 0; i < turmaAluno.length; i++) {
     turmaAluno[i].innerHTML = `<b>Turma:</b> ${turmaSelect}`;
   }
@@ -137,7 +133,9 @@ function valorInsert() {
   var valorMensalidade = document.getElementsByClassName("valorCarne");
 
   for (var i = 0; i < valorMensalidade.length; i++) {
-    valorMensalidade[i].innerHTML = `<b>Valor: R$</b> ${document.getElementById("valorMensalidade").value}`;
+    valorMensalidade[i].innerHTML = `<b>Valor: R$</b> ${
+      document.getElementById("valorMensalidade").value
+    }`;
   }
 }
 
@@ -157,12 +155,16 @@ function showValue() {
 
 function showDiv(nameDiv) {
   var oneDiv = document.getElementById(nameDiv);
-  var divs = ["coverCarnePrint", "carneFevNovPrint", "mesDezPrint"];
+
+  var divs = ["coverCarneWithNamePrint", "carneFevNovPrint"];
+
   var form = document.getElementById("formInput");
+  var formCover = document.getElementById("formInputCover");
+
   let buttons = ["button1", "button2"];
 
   for (var i = 0; i < divs.length; i++) {
-    if (oneDiv != document.getElementById(divs[i])) {
+    if (nameDiv !== divs[i]) {
       document.getElementById(divs[i]).style.display = "none";
     }
   }
@@ -170,28 +172,23 @@ function showDiv(nameDiv) {
   oneDiv.style.display = "";
 
   // Mostrar o form
-  if (nameDiv !== "coverCarnePrint") {
-    // console.log("Display do Form: " + form.style.display);
-    form.style.display = "";
-
-    if (showValue() === "mesDezPrint") {
-      document.getElementsByClassName("button button1")[0].style.display = "block";
-      document.getElementsByClassName("button button2")[0].style.display = "block";
-      document.getElementById("nomeAluno").onkeyup = null;
-      document.getElementById("turmaAluno").onkeyup = null;
-      document.getElementById("valorMensalidade").onkeyup = null;
-    } else {
-      document.getElementsByClassName("button1")[0].style.display = "block";
-      document.getElementsByClassName("button button2")[0].style.display = "none";
-    }
-  } else {
-    document.getElementsByClassName("button button1")[0].style.display = "block";
-    document.getElementsByClassName("button button2")[0].style.display = "none";
+  if (showValue() === "coverCarneWithNamePrint") {
     form.style.display = "none";
+    formCover.style.display = "";
+    document.getElementsByClassName("button button1")[0].style.display =
+      "block";
+    document.getElementsByClassName("button button2")[0].style.display =
+      "block";
+    document.getElementById("nomeAluno").onkeyup = null;
+  } else {
+    formCover.style.display = "none";
+    form.style.display = "";
+    document.getElementsByClassName("button1")[0].style.display = "block";
+    document.getElementsByClassName("button button2")[0].style.display = "none";
   }
 }
 
-var addRowDez = function() {
+var addRowDez = function () {
   var nameAluno = document.getElementById("nomeAluno").value;
   var turmaAluno = document.getElementById("turmaAluno").value;
   var valorMensalidade = document.getElementById("valorMensalidade").value;
@@ -224,40 +221,56 @@ var addRowDez = function() {
   }
 
   if (nameAluno.value !== "") {
-    // console.log("Clear field - Nome");
     nameAluno.value = "";
   }
 
   if (turmaAluno !== "") {
-    // console.log("Clear field - Turma");
     turmaAluno.value = "";
   }
 
   if (valorMensalidade !== "") {
-    // console.log("Clear field - Valor");
     valorMensalidade.value = "";
   }
 };
 
-function hideTable(nameId) {
+var addNewRowCover = function () {
+  var nameAluno = document.getElementById("nomeAlunoCover").value;
+  var table = document.getElementById("coverCarneWithNamePrint");
+
+  table.innerHTML +=
+    "<tr>" +
+    "<td colspan='2' class='capaCarne'>" +
+    "<img src='img/logo.png' alt='Logotipo Escola Crescer' />" +
+    "<h2>Carnê Escolar 2021</h2>" +
+    "<p class='nameAlunoCover'>" +
+    nameAluno +
+    "</p>" +
+    "</td>" +
+    "</tr>";
+
+  if (nameAluno.value !== "") {
+    nameAluno.value = "";
+  }
+};
+
+function hideElement(nameId) {
   var hide = document.getElementById(nameId);
+  console.log("hideElement ===> hide: ", hide);
   hide.style.display = "none";
 }
 
-var hideAll = function() {
+var hideAll = function () {
   setTitleApp();
   setTitleCapaCarne();
-  hideTable("carneFevNovPrint");
-  hideTable("coverCarnePrint");
-  hideTable("mesDezPrint");
-  hideTable("formInput");
+  hideElement("carneFevNovPrint");
+  hideElement("formInput");
+  hideElement("formInputCover");
 };
 
-var main = () => {
-  setTitleApp();
-  setTitleCapaCarne();
-  hideTable("carneFevNovPrint");
-  hideTable("coverCarnePrint");
-  hideTable("mesDezPrint");
-  hideTable("formInput");
-}
+var main = async () => {
+  await setTitleApp();
+  await setTitleCapaCarne();
+  hideElement("carneFevNovPrint");
+  hideElement("formInput");
+  hideElement("formInputCover");
+};
