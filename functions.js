@@ -188,6 +188,7 @@ function showDiv(nameDiv) {
   // Mostrar o form
   if (nameDiv !== "coverCarnePrint") {
     console.log("ShowValue: " + showValue());
+    form.style.display = "";
 
     if (showValue() === "coverCarneWithNamePrint") {
       form.style.display = "none";
