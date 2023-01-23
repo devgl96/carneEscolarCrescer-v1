@@ -1,5 +1,4 @@
 // Carregar função ao iniciar a página
-// window.onload = main;
 window.onload = dataVencimentoInsert;
 
 function setTitleApp() {
@@ -16,8 +15,6 @@ function setTitleCapaCarne() {
       i
     ].children[1].innerHTML = `Carnê Escolar ${new Date().getFullYear()}`;
   }
-
-  // console.log("HeadingCapaCarne: ", headingCapaCarne)
 }
 
 function validaForm() {
@@ -50,15 +47,12 @@ function imprimirCarne(tableNameId) {
   console.log("imprimirCarne!!!");
   var paginaPrincipal = document.body.innerHTML;
   var imprimirCarne = document.getElementById(tableNameId).innerHTML;
-  // console.log(imprimirCarne);
 
-  // var verifyFieldsForm = validaForm();
   var verifyFieldsForm = true;
 
   if (verifyFieldsForm) {
     console.log("Tudo OKAY!");
     if (tableNameId === "carneFevNovPrint" || tableNameId === "mesDezPrint") {
-      //alert("Estou aqui => " + tableNameId);
       document.body.innerHTML =
         '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrint.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
         tableNameId +
@@ -66,7 +60,6 @@ function imprimirCarne(tableNameId) {
         imprimirCarne +
         "</table></body>";
     } else {
-      //alert("Estou aqui => " + tableNameId);
       document.body.innerHTML =
         '<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="stylePrinter.css" type="text/css"><title>Imprimir Carnê</title></head><body><table id=' +
         tableNameId +
@@ -96,9 +89,9 @@ function nomeInsert() {
 
 var dataVencimentoInsert = function () {
   main();
-  // console.log("Inserindo datas de vencimento \n");
+
   var datasPag = new Array();
-  //var meses = ["(Fevereiro)", "(Março)", "(Abril)", "(Maio)", "(Junho)", "(Julho)", "(Agosto)", "(Setembro)", "(Outubro)", "(Novembro)", "(Dezembro)"];
+
   var ano = new Date().getFullYear();
   var mes = "01";
   var dia = "08";
@@ -106,9 +99,7 @@ var dataVencimentoInsert = function () {
 
   for (var i = 1, j = 0; i <= 12; i++, j++) {
     if (i < 10) dataPagamento = dia + "/0" + parseInt(mes) + "/" + ano;
-    //dataPagamento = dia + "/" + meses[j].toString() + "/" + ano + "<br>";
     else dataPagamento = dia + "/" + parseInt(mes) + "/" + ano;
-    //dataPagamento = dia + "/" + meses[j].toString()  + "/" + ano + "<br>";
 
     datasPag[j] = dataPagamento;
     mes = parseInt(i) + 1;
@@ -131,8 +122,6 @@ var dataVencimentoInsert = function () {
 function turmaInsert() {
   var turmaSelect = document.getElementById("turmaAluno").value;
   var turmaAluno = document.getElementsByClassName("turmaCarne");
-
-  // console.log(turmaSelect)
 
   for (var i = 0; i < turmaAluno.length; i++) {
     turmaAluno[i].innerHTML = `<b>Turma:</b> ${turmaSelect}`;
@@ -176,14 +165,11 @@ function showDiv(nameDiv) {
 
   for (var i = 0; i < divs.length; i++) {
     if (nameDiv !== divs[i]) {
-      console.log("divs[i]", divs[i]);
       document.getElementById(divs[i]).style.display = "none";
     }
   }
 
   oneDiv.style.display = "";
-
-  console.log("showDiv ===> oneDiv: ", oneDiv);
 
   // Mostrar o form
   if (showValue() === "coverCarneWithNamePrint") {
@@ -235,17 +221,14 @@ var addRowDez = function () {
   }
 
   if (nameAluno.value !== "") {
-    // console.log("Clear field - Nome");
     nameAluno.value = "";
   }
 
   if (turmaAluno !== "") {
-    // console.log("Clear field - Turma");
     turmaAluno.value = "";
   }
 
   if (valorMensalidade !== "") {
-    // console.log("Clear field - Valor");
     valorMensalidade.value = "";
   }
 };
@@ -266,7 +249,6 @@ var addNewRowCover = function () {
     "</tr>";
 
   if (nameAluno.value !== "") {
-    // console.log("Clear field - Nome");
     nameAluno.value = "";
   }
 };
@@ -281,7 +263,6 @@ var hideAll = function () {
   setTitleApp();
   setTitleCapaCarne();
   hideElement("carneFevNovPrint");
-  hideElement("coverCarnePrint");
   hideElement("formInput");
   hideElement("formInputCover");
 };
