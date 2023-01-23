@@ -179,10 +179,10 @@ function showDiv(nameDiv) {
       "block";
     document.getElementsByClassName("button button2")[0].style.display =
       "block";
-    document.getElementById("nomeAluno").onkeyup = null;
   } else {
     formCover.style.display = "none";
     form.style.display = "";
+
     document.getElementsByClassName("button1")[0].style.display = "block";
     document.getElementsByClassName("button button2")[0].style.display = "none";
   }
@@ -236,12 +236,14 @@ var addRowDez = function () {
 var addNewRowCover = function () {
   var nameAluno = document.getElementById("nomeAlunoCover").value;
   var table = document.getElementById("coverCarneWithNamePrint");
-
+  var anoAtual = new Date().getFullYear();
   table.innerHTML +=
     "<tr>" +
     "<td colspan='2' class='capaCarne'>" +
     "<img src='img/logo.png' alt='Logotipo Escola Crescer' />" +
-    "<h2>Carnê Escolar 2021</h2>" +
+    "<h2>Carnê Escolar " +
+    anoAtual +
+    "</h2>" +
     "<p class='nameAlunoCover'>" +
     nameAluno +
     "</p>" +
