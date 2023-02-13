@@ -234,9 +234,22 @@ var addRowDez = function () {
 };
 
 var addNewRowCover = function () {
+  const valuesMensalidades = ["265", "270", "280"];
+  let renderPixImg = "";
   var nameAluno = document.getElementById("nomeAlunoCover").value;
+  var valorMensalidadeAluno = document.getElementById(
+    "valorMensalidadeCover"
+  ).value;
   var table = document.getElementById("coverCarneWithNamePrint");
   var anoAtual = new Date().getFullYear();
+
+  if (valuesMensalidades.includes(valorMensalidadeAluno.slice(0, 3))) {
+    renderPixImg = `<img src='img/pix${valorMensalidadeAluno.slice(
+      0,
+      3
+    )}.png' alt='Pix da Mensalidade de ${valorMensalidadeAluno}' class="capaCarnePix" />`;
+  }
+
   table.innerHTML +=
     "<tr>" +
     "<td colspan='2' class='capaCarne'>" +
@@ -247,6 +260,7 @@ var addNewRowCover = function () {
     "<p class='nameAlunoCover'>" +
     nameAluno +
     "</p>" +
+    renderPixImg +
     "</td>" +
     "</tr>";
 
