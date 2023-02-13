@@ -179,10 +179,10 @@ function showDiv(nameDiv) {
       "block";
     document.getElementsByClassName("button button2")[0].style.display =
       "block";
-    document.getElementById("nomeAluno").onkeyup = null;
   } else {
     formCover.style.display = "none";
     form.style.display = "";
+
     document.getElementsByClassName("button1")[0].style.display = "block";
     document.getElementsByClassName("button button2")[0].style.display = "none";
   }
@@ -234,17 +234,33 @@ var addRowDez = function () {
 };
 
 var addNewRowCover = function () {
+  const valuesMensalidades = ["265", "270", "280"];
+  let renderPixImg = "";
   var nameAluno = document.getElementById("nomeAlunoCover").value;
+  var valorMensalidadeAluno = document.getElementById(
+    "valorMensalidadeCover"
+  ).value;
   var table = document.getElementById("coverCarneWithNamePrint");
+  var anoAtual = new Date().getFullYear();
+
+  if (valuesMensalidades.includes(valorMensalidadeAluno.slice(0, 3))) {
+    renderPixImg = `<img src='img/pix${valorMensalidadeAluno.slice(
+      0,
+      3
+    )}.png' alt='Pix da Mensalidade de ${valorMensalidadeAluno}' class="capaCarnePix" />`;
+  }
 
   table.innerHTML +=
     "<tr>" +
     "<td colspan='2' class='capaCarne'>" +
     "<img src='img/logo.png' alt='Logotipo Escola Crescer' />" +
-    "<h2>Carnê Escolar 2021</h2>" +
+    "<h2>Carnê Escolar " +
+    anoAtual +
+    "</h2>" +
     "<p class='nameAlunoCover'>" +
     nameAluno +
     "</p>" +
+    renderPixImg +
     "</td>" +
     "</tr>";
 

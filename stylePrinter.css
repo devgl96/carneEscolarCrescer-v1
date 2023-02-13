@@ -1,54 +1,55 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 25mm;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 25mm;
 }
 
 /* Carne Program */
-td .capaCarne{
-    text-align: center;
-    padding-bottom: 14px;
-    padding-top: 14px;
+td .capaCarne {
+  text-align: center;
+  padding-bottom: 14px;
+  padding-top: 14px;
 }
 
 /* Print Carne Struct */
-.printCarne{
-    position: fixed;
-    background: #ffffff;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 5px;
+.printCarne {
+  position: fixed;
+  background: #ffffff;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 5px;
 }
 
-td h4{
-    display: inline;
+td h4 {
+  display: inline;
 }
 
-table{
-    table-layout: fixed;
-    margin-left: auto;
-    margin-right: 50%;
-    page-break-inside:auto;
-    border: 2px solid red;
+table {
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: 50%;
+  page-break-inside: auto;
+  border: 2px solid red;
 }
 
-thead{ 
-    display:table-header-group; 
+thead {
+  display: table-header-group;
 }
 
-tfoot{ 
-    display:table-footer-group;
+tfoot {
+  display: table-footer-group;
 }
 
-tr{
-    page-break-inside:avoid; 
-    page-break-after:auto; 
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
 }
 
-td{ 
-    page-break-inside:avoid; 
-    page-break-after:auto;
-    border: 5px solid #333;
-    padding-left: 20px; 
+td {
+  page-break-inside: avoid;
+  page-break-after: auto;
+  border: 5px solid #333;
+  padding-left: 20px;
 }
